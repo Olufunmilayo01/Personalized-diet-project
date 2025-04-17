@@ -1,1 +1,0 @@
-import { updateFooter } from "./utils.js";

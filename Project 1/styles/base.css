@@ -48,6 +48,11 @@ nav a {
   font-weight: 600;
 }
 
+.menuLinks .active {
+  color: yellow;
+  font-weight: bold;
+}
+
 .hero {
   position: relative;
   text-align: center;
@@ -88,8 +93,8 @@ h2 {
   text-align: center;
   color: #333;
   display: block;
-  background-color: #ccc;
-  padding: 2px;
+  background-color: rgb(123, 141, 133);
+  padding: 4px;
 }
 
 .form-container {
@@ -187,19 +192,67 @@ button[type="submit"]:hover {
   display: none !important;
 }
 
-/* .meal-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  margin: 10px 0;
-  padding: 15px;
-  width: 300px;
+#recipeSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.meal-card img {
-  width: 100%;
+#recipeSearch input,
+#recipeSearch select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#searchBtn {
+  padding: 0.75rem;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#searchBtn:hover {
+  background-color: #005fa3;
+}
+
+.recipe-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.recipe-card img {
+  max-width: 100%;
   border-radius: 8px;
-} */
+}
+
+.recipe-card h3 {
+  margin: 0.5rem 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #3fa796;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 0.5rem 0;
+  color: black;
+}
+
+footer span {
+  font-weight: bold;
+}
 
 @media (max-width: 600px) {
   .profile-form {
@@ -208,5 +261,34 @@ button[type="submit"]:hover {
 
   button[type="submit"] {
     width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: left;
+  }
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .menuLinks {
+    display: none; /* Hide menu initially */
+  }
+
+  .menuLinks a {
+    display: block;
+  }
+
+  #myButton {
+    display: block; /* Show hamburger in mobile view */
+    cursor: pointer;
+  }
+
+  .menuLinks.open {
+    display: flex; /* Show menu when open */
+  }
+
+  .right-buttons {
+    display: flex;
   }
 }

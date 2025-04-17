@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/nutriton.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Food Recipes Nutrition Facts</h1>
+    </header>
+    <nav>
+        <button id="myButton">&#9776;</button>
+        <ul class="menuLinks">
+          <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html" >Profile</a></li>
+        <!-- <li><a href="meal-plan.html">Meal Plan</a></li> -->
+        <li><a href="nutrition.html" class="active">Nutrition</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+      </nav>
+  <div class="container">
+    <h1>Nutritional Breakdown Viewer</h1>
+    <div class="input-container">
+      <input type="text" id="searchInput" placeholder="Enter a food item (e.g., egg)">
+      <button id="searchButton">Search</button>
+  </div>
+  <div id="result"></div>
+  </div>
+  <footer>
+    <p>
+      &copy; <span id="currentYear"></span> 🌺 Oluwatobiloba Makinde 🌺
+      Nigeria
+    </p>
+    <p id="lastModified"></p>
+    <p>
+    </footer>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/nutrition.js"></script>
+</body>
+</html>
+
+

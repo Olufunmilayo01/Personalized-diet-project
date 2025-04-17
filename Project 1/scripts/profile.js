@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("profileForm");
-  const preview = document.getElementById("profilePreview");
+  const summary = document.getElementById("profileSummary");
 
   // Add Edit & Clear buttons dynamically
   const editBtn = document.createElement("button");
@@ -13,35 +13,35 @@ document.addEventListener("DOMContentLoaded", () => {
   editBtn.type = "button";
   clearBtn.type = "button";
 
-  preview.after(editBtn, clearBtn);
+  summary.after(editBtn, clearBtn); // Place buttons after summary
 
-  // Function to show buttons
+  // Show buttons
   function showActionButtons() {
-    editBtn.style.display = "inline-block";
-    clearBtn.style.display = "inline-block";
+    editBtn.classList.remove("hidden");
+    clearBtn.classList.remove("hidden");
   }
 
   // Load from localStorage
   const savedData = JSON.parse(localStorage.getItem("userProfile"));
   if (savedData) {
     fillForm(savedData);
-    updatePreview(savedData);
+    displaySummary(savedData);
+    form.style.display = "none";
+    summary.style.display = "block";
     showActionButtons();
   }
-
-  // Update preview on input
-  form.addEventListener("input", () => {
-    updatePreview(getFormData());
-  });
 
   // Save on submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const data = getFormData();
 
-    // Validate fields (basic)
     if (!data.name || !data.age || !data.gender || !data.goal) {
       alert("Please fill in all required fields.");
+      return;
+    }
+
+    if (!confirm("Do you want to save and hide the form?")) {
       return;
     }
 
@@ -51,19 +51,33 @@ document.addEventListener("DOMContentLoaded", () => {
       gender: data.gender,
       goal: data.goal,
       preferences: data.preferences,
-      conditions: data.conditions
+      conditions: data.conditions,
     };
 
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
-    updatePreview(userProfile);
-    alert("Profile saved successfully!");
+
+
+    form.reset();
+    form.style.display = "none";
+    displaySummary(userProfile);
+    summary.style.display = "block";
     showActionButtons();
+
+    // ⏱️ Return form after 2 seconds
+    setTimeout(() => {
+      summary.style.display = "none";
+      fillForm(userProfile); // refill form with saved data
+      form.style.display = "block";
+      form.scrollIntoView({ behavior: "smooth" });
+    }, 2000);
   });
 
   // Edit button
   editBtn.addEventListener("click", () => {
     const data = JSON.parse(localStorage.getItem("userProfile"));
     if (data) fillForm(data);
+    form.style.display = "block";
+    summary.style.display = "none";
     form.scrollIntoView({ behavior: "smooth" });
   });
 
@@ -72,7 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (confirm("Are you sure you want to clear your profile?")) {
       localStorage.removeItem("userProfile");
       form.reset();
-      preview.innerHTML = "";
+      form.style.display = "block";
+      summary.innerHTML = "";
+      summary.style.display = "none";
     }
   });
 
@@ -97,25 +113,24 @@ document.addEventListener("DOMContentLoaded", () => {
     form.preferences.value = data.preferences || "";
   }
 
-  function updatePreview(data) {
-    preview.innerHTML = `
-      <h3>Profile Preview</h3>
-      <table>
-        <tr><td><strong>Full Name:</strong></td><td>${data.name || "-"}</td></tr>
-        <tr><td><strong>Age:</strong></td><td>${data.age || "-"}</td></tr>
-        <tr><td><strong>Gender:</strong></td><td>${data.gender || "-"}</td></tr>
-        <tr><td><strong>Health Conditions:</strong></td><td>${data.conditions || "-"}</td></tr>
-        <tr><td><strong>Fitness Goal:</strong></td><td>${data.goal || "-"}</td></tr>
-        <tr><td><strong>Dietary Preferences:</strong></td><td>${data.preferences || "-"}</td></tr>
-      </table>
+  function displaySummary(data) {
+    summary.innerHTML = `
+      <div class="profile-card" style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+        <h3>Profile Summary</h3>
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Age:</strong> ${data.age}</p>
+        <p><strong>Gender:</strong> ${data.gender}</p>
+        <p><strong>Health Conditions:</strong> ${data.conditions || "None"}</p>
+        <p><strong>Fitness Goal:</strong> ${data.goal}</p>
+        <p><strong>Dietary Preferences:</strong> ${
+          data.preferences || "None"
+        }</p>
+        <em>Returning to form in 2 seconds...</em>
+      </div>
     `;
   }
 
+  // Initially hide buttons
   editBtn.classList.add("hidden");
   clearBtn.classList.add("hidden");
-
-  function showActionButtons() {
-    editBtn.classList.remove("hidden");
-    clearBtn.classList.remove("hidden");
-  }
 });

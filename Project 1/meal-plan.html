@@ -33,17 +33,18 @@
   <body>
     <header>
       <h1>Personalized Health Dashboard</h1>
+    </header>
       <nav>
         <button id="myButton">&#9776;</button>
         <ul class="menuLinks">
-          <li><a href="#" title="Home">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="profile.html">Profile</a></li>
           <li><a href="meal-plan.html" class="active">Meal Plan</a></li>
           <li><a href="nutrition.html">Nutrition</a></li>
           <li><a href="recipes.html">Recipes</a></li>
         </ul>
       </nav>
-    </header>
+    
     <main class="form-container">
         <form id="profileForm" class="profile-form">
           <h2>Create Your Meal Plan</h2>
@@ -99,6 +100,15 @@
         <div id="mealsContainer"></div>
       </section> -->
     </main>
+    <footer>
+      <p>
+        &copy; <span id="currentYear"></span> 🌺 Oluwatobiloba Makinde 🌺
+        Nigeria
+      </p>
+      <p id="lastModified"></p>
+      <p>
+      </footer>
+      <script src="scripts/main.js"></script>
       <script src="scripts/meal-plan.js"></script>
     
   </body>
