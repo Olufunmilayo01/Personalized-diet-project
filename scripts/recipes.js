@@ -1,50 +1,3 @@
-// const searchBtn = document.getElementById("searchBtn");
-// const searchQueryInput = document.getElementById("searchQuery");
-// const dietFilter = document.getElementById("dietFilter");
-// const resultsContainer = document.getElementById("resultsContainer");
-
-// const SPOON_API_KEY = "YOUR_SPOONACULAR_API_KEY"; // Replace with your key
-
-// searchBtn.addEventListener("click", async () => {
-//   const query = searchQueryInput.value;
-//   const diet = dietFilter.value;
-
-//   if (!query) return;
-
-//   const response = await fetch(
-//     `https:www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-//   );
-//   const data = await response.json();
-//   displayRecipes(data.results);
-// });
-
-// function displayRecipes(recipes) {
-//   resultsContainer.innerHTML = "";
-
-//   recipes.forEach(recipe => {
-//     const card = document.createElement("div");
-//     card.classList.add("recipe-card");
-
-//     const nutrition = recipe.nutrition?.nutrients || [];
-
-//     const calories = nutrition.find(n => n.name === "Calories")?.amount || "N/A";
-//     const protein = nutrition.find(n => n.name === "Protein")?.amount || "N/A";
-//     const fat = nutrition.find(n => n.name === "Fat")?.amount || "N/A";
-
-//     card.innerHTML = `
-//       <h3>${recipe.title}</h3>
-//       <img src="${recipe.image}" alt="${recipe.title}">
-//       <p><strong>Calories:</strong> ${calories}</p>
-//       <p><strong>Protein:</strong> ${protein}g</p>
-//       <p><strong>Fat:</strong> ${fat}g</p>
-//       <a href="https://spoonacular.com/recipes/${recipe.title
-//         .toLowerCase()
-//         .replace(/ /g, "-")}-${recipe.id}" target="_blank">View Full Recipe</a>
-//     `;
-//     resultsContainer.appendChild(card);
-//   });
-// }
-
 document.getElementById("button").addEventListener("click", () => {
   let inputValue = document.getElementById("inputName").value;
   let details = document.getElementById("details");
@@ -76,7 +29,6 @@ document.getElementById("button").addEventListener("click", () => {
       }
     });
 });
-
 
 function details(id) {
   fetch(`https:www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
