@@ -3,43 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meal Plan</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    <title>Oluwatobiloba Makinde - WDD 330 - Web Frontend Development II</title>
+    <meta
+      name="description"
+      content="WDD 330- Web Frontend Developemnt II - Oluwatobiloba Makinde - Health Dashboard"
     />
+    <meta name="author" content="Oluwatobiloba Makinde" />
+
+    <meta
+      property="og:title"
+      content="Oluwatobiloba Makinde - WDD 330 - Web Frontend Development II"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://olufunmilayo01.github.io/wdd230/"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    />
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/larger.css" />
+    <link rel="icon" href="favicon.ico" />
   </head>
   <body>
+    <header>
+      <h1>Personalized Health Dashboard</h1>
+    </header>
     <nav>
-      <form class="input-container">
-        <input type="text" class="input" placeholder="Search ..." />
-        <i class="fa-solid fa-magnifying-glass magnifier"></i>
-      </form>
-      <ul>
-        <li>Breakfast</li>
-        <li>Lunch</li>
-        <li>Dinner</li>
+      <button id="myButton">&#9776;</button>
+      <ul class="menuLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <!-- <li><a href="meal-plan.html">Meal Plan</a></li> -->
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
       </ul>
     </nav>
     <main>
-      <div class="container">
-        <div class="img"></div>
-        <div class="content-container">
-          <h1 class="title">Food Name</h1>
-          <p class="info">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-            delectus ratione dolorum totam magnam ducimus aliquid, perferendis
-            sint non iste.
-          </p>
-          <button class="main-btn">Order Now</button>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Your journey to healthier living starts here.</h2>
+          <img src="images/eat.jpg" alt="Eat Healthy" />
+          <!-- <a href="meal-plan.html" class="cta-button">Get started</a> -->
         </div>
-      </div>
+      </section>
+      <!-- <p>Welcome! Set your goals and get food recommendations.</p> -->
     </main>
-    <section class="ingredients"></section>
-    <script src="scripts/app.js"></script>
+    <footer>
+      <p>
+        &copy; <span id="currentYear"></span> 🌺 Oluwatobiloba Makinde 🌺
+        Nigeria
+      </p>
+      <p id="lastModified"></p>
+      <p></p>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
   </body>
 </html>
